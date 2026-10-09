@@ -12,8 +12,13 @@ jobs:
   sync:
     runs-on: ubuntu-22.04
     steps:
-      - name: Espaço inicial
-        run: df -h / && free -h
+      - name: Limpeza agressiva de disco
+        run: |
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache/CodeQL /usr/local/share/boost /usr/share/swift 2>/dev/null || true
+          sudo docker image prune --all --force 2>/dev/null || true
+          sudo apt-get clean
+          echo "=== DISCO APOS LIMPEZA ==="
+          df -h / && free -h
 
       - name: Instalar repo + deps
         run: |
@@ -30,13 +35,23 @@ jobs:
           repo init -u https://github.com/EzequielDevTeam/EvoX_A17_treble -b main -m EvoX_A17.xml --depth=1 --git-lfs
         continue-on-error: false
 
-      - name: Repo sync (shallow, sem tags)
+      - name: Repo sync (shallow, sem tags, com retry)
         working-directory: /home/runner/evo
         timeout-minutes: 300
         run: |
-          repo sync -c --no-tags --no-clone-bundle -j$(nproc --all) 2>&1 | tail -n 5
+          for i in 1 2 3; do
+            echo "=== tentativa $i ==="
+            df -h / | head -n 3
+            repo sync -c --no-tags --no-clone-bundle --optimized-fetch --prune -j$(nproc --all) 2>&1 | tail -n 3 && break
+            echo "tentativa $i falhou, disco:"
+            df -h /
+            sleep 20
+          done
           echo "=== DISCO APOS SYNC ==="
           df -h /
+          FREE_GB=$(df --output=avail -BG / | tail -n 1 | tr -dc '0-9')
+          echo "livre: ${FREE_GB}GB"
+          if [ "$FREE_GB" -lt 15 ]; then echo "FALHA: disco insuficiente para build"; exit 1; fi
 
       - name: Validar trio + lunch
         working-directory: /home/runner/evo
