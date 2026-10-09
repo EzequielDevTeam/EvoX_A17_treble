@@ -40,32 +40,31 @@ jobs:
         run: |
           repo init -u https://github.com/EzequielDevTeam/EvoX_A17_treble -b main -m EvoX_A17.xml --depth=1 --git-lfs
 
-      - name: Dividir sync em 4 partes
+      - name: Dividir sync em 8 partes
         working-directory: /home/runner/evo
         run: |
           repo list -n > /tmp/all-projects.txt
           wc -l /tmp/all-projects.txt
-          split -n l/4 -d /tmp/all-projects.txt /tmp/chunk-
-          wc -l /tmp/chunk-* ; wc -c /tmp/chunk-*
+          split -n l/8 -d /tmp/all-projects.txt /tmp/chunk-
+          wc -l /tmp/chunk-*
 
-      - name: Sync parte 1/4
+      - name: Sync parte 1/8
         working-directory: /home/runner/evo
-        timeout-minutes: 100
+        timeout-minutes: 55
         run: |
           ok=0
-          for i in 1 2 3; do
-            echo "=== parte 1 tentativa $i ==="
-            repo sync -c --no-tags --no-clone-bundle --optimized-fetch --prune -j4 $(cat /tmp/chunk-00) > /tmp/probe/sync-1.log 2>&1 && { ok=1; break; }
-            echo "tentativa $i falhou:"
+          for t in 1 2 3; do
+            echo "=== parte 1 tentativa $t ==="
+            repo sync -c --no-tags --no-clone-bundle --optimized-fetch --prune -j2 $(cat /tmp/chunk-00) > /tmp/probe/sync-1.log 2>&1 && { ok=1; break; }
+            echo "tentativa $t falhou:"
             grep -a -iE "error|fatal|fail" /tmp/probe/sync-1.log | tail -n 8 || true
             sleep 20
           done
           echo "sync_ok=$ok"
-          [ "$ok" = "1" ]
-          tail -n 3 /tmp/probe/sync-1.log
           df -h / > /tmp/probe/df-1.txt; cat /tmp/probe/df-1.txt
+          [ "$ok" = "1" ]
 
-      - name: Upload df parte 1
+      - name: Upload rastro parte 1
         if: always()
         uses: actions/upload-artifact@v4
         with:
@@ -74,24 +73,23 @@ jobs:
             /tmp/probe/df-1.txt
             /tmp/probe/sync-1.log
 
-      - name: Sync parte 2/4
+      - name: Sync parte 2/8
         working-directory: /home/runner/evo
-        timeout-minutes: 100
+        timeout-minutes: 55
         run: |
           ok=0
-          for i in 1 2 3; do
-            echo "=== parte 2 tentativa $i ==="
-            repo sync -c --no-tags --no-clone-bundle --optimized-fetch --prune -j4 $(cat /tmp/chunk-01) > /tmp/probe/sync-2.log 2>&1 && { ok=1; break; }
-            echo "tentativa $i falhou:"
+          for t in 1 2 3; do
+            echo "=== parte 2 tentativa $t ==="
+            repo sync -c --no-tags --no-clone-bundle --optimized-fetch --prune -j2 $(cat /tmp/chunk-01) > /tmp/probe/sync-2.log 2>&1 && { ok=1; break; }
+            echo "tentativa $t falhou:"
             grep -a -iE "error|fatal|fail" /tmp/probe/sync-2.log | tail -n 8 || true
             sleep 20
           done
           echo "sync_ok=$ok"
-          [ "$ok" = "1" ]
-          tail -n 3 /tmp/probe/sync-2.log
           df -h / > /tmp/probe/df-2.txt; cat /tmp/probe/df-2.txt
+          [ "$ok" = "1" ]
 
-      - name: Upload df parte 2
+      - name: Upload rastro parte 2
         if: always()
         uses: actions/upload-artifact@v4
         with:
@@ -100,24 +98,23 @@ jobs:
             /tmp/probe/df-2.txt
             /tmp/probe/sync-2.log
 
-      - name: Sync parte 3/4
+      - name: Sync parte 3/8
         working-directory: /home/runner/evo
-        timeout-minutes: 100
+        timeout-minutes: 55
         run: |
           ok=0
-          for i in 1 2 3; do
-            echo "=== parte 3 tentativa $i ==="
-            repo sync -c --no-tags --no-clone-bundle --optimized-fetch --prune -j4 $(cat /tmp/chunk-02) > /tmp/probe/sync-3.log 2>&1 && { ok=1; break; }
-            echo "tentativa $i falhou:"
+          for t in 1 2 3; do
+            echo "=== parte 3 tentativa $t ==="
+            repo sync -c --no-tags --no-clone-bundle --optimized-fetch --prune -j2 $(cat /tmp/chunk-02) > /tmp/probe/sync-3.log 2>&1 && { ok=1; break; }
+            echo "tentativa $t falhou:"
             grep -a -iE "error|fatal|fail" /tmp/probe/sync-3.log | tail -n 8 || true
             sleep 20
           done
           echo "sync_ok=$ok"
-          [ "$ok" = "1" ]
-          tail -n 3 /tmp/probe/sync-3.log
           df -h / > /tmp/probe/df-3.txt; cat /tmp/probe/df-3.txt
+          [ "$ok" = "1" ]
 
-      - name: Upload df parte 3
+      - name: Upload rastro parte 3
         if: always()
         uses: actions/upload-artifact@v4
         with:
@@ -126,27 +123,23 @@ jobs:
             /tmp/probe/df-3.txt
             /tmp/probe/sync-3.log
 
-      - name: Sync parte 4/4
+      - name: Sync parte 4/8
         working-directory: /home/runner/evo
-        timeout-minutes: 100
+        timeout-minutes: 55
         run: |
           ok=0
-          for i in 1 2 3; do
-            echo "=== parte 4 tentativa $i ==="
-            repo sync -c --no-tags --no-clone-bundle --optimized-fetch --prune -j4 $(cat /tmp/chunk-03) > /tmp/probe/sync-4.log 2>&1 && { ok=1; break; }
-            echo "tentativa $i falhou:"
+          for t in 1 2 3; do
+            echo "=== parte 4 tentativa $t ==="
+            repo sync -c --no-tags --no-clone-bundle --optimized-fetch --prune -j2 $(cat /tmp/chunk-03) > /tmp/probe/sync-4.log 2>&1 && { ok=1; break; }
+            echo "tentativa $t falhou:"
             grep -a -iE "error|fatal|fail" /tmp/probe/sync-4.log | tail -n 8 || true
             sleep 20
           done
           echo "sync_ok=$ok"
-          [ "$ok" = "1" ]
-          tail -n 3 /tmp/probe/sync-4.log
           df -h / > /tmp/probe/df-4.txt; cat /tmp/probe/df-4.txt
-          FREE_GB=$(df --output=avail -BG / | tail -n 1 | tr -dc '0-9')
-          echo "livre: ${FREE_GB}GB"
-          if [ "$FREE_GB" -lt 15 ]; then echo "FALHA: disco insuficiente para build"; exit 1; fi
+          [ "$ok" = "1" ]
 
-      - name: Upload df parte 4
+      - name: Upload rastro parte 4
         if: always()
         uses: actions/upload-artifact@v4
         with:
@@ -154,6 +147,109 @@ jobs:
           path: |
             /tmp/probe/df-4.txt
             /tmp/probe/sync-4.log
+
+      - name: Sync parte 5/8
+        working-directory: /home/runner/evo
+        timeout-minutes: 55
+        run: |
+          ok=0
+          for t in 1 2 3; do
+            echo "=== parte 5 tentativa $t ==="
+            repo sync -c --no-tags --no-clone-bundle --optimized-fetch --prune -j2 $(cat /tmp/chunk-04) > /tmp/probe/sync-5.log 2>&1 && { ok=1; break; }
+            echo "tentativa $t falhou:"
+            grep -a -iE "error|fatal|fail" /tmp/probe/sync-5.log | tail -n 8 || true
+            sleep 20
+          done
+          echo "sync_ok=$ok"
+          df -h / > /tmp/probe/df-5.txt; cat /tmp/probe/df-5.txt
+          [ "$ok" = "1" ]
+
+      - name: Upload rastro parte 5
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: df-5
+          path: |
+            /tmp/probe/df-5.txt
+            /tmp/probe/sync-5.log
+
+      - name: Sync parte 6/8
+        working-directory: /home/runner/evo
+        timeout-minutes: 55
+        run: |
+          ok=0
+          for t in 1 2 3; do
+            echo "=== parte 6 tentativa $t ==="
+            repo sync -c --no-tags --no-clone-bundle --optimized-fetch --prune -j2 $(cat /tmp/chunk-05) > /tmp/probe/sync-6.log 2>&1 && { ok=1; break; }
+            echo "tentativa $t falhou:"
+            grep -a -iE "error|fatal|fail" /tmp/probe/sync-6.log | tail -n 8 || true
+            sleep 20
+          done
+          echo "sync_ok=$ok"
+          df -h / > /tmp/probe/df-6.txt; cat /tmp/probe/df-6.txt
+          [ "$ok" = "1" ]
+
+      - name: Upload rastro parte 6
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: df-6
+          path: |
+            /tmp/probe/df-6.txt
+            /tmp/probe/sync-6.log
+
+      - name: Sync parte 7/8
+        working-directory: /home/runner/evo
+        timeout-minutes: 55
+        run: |
+          ok=0
+          for t in 1 2 3; do
+            echo "=== parte 7 tentativa $t ==="
+            repo sync -c --no-tags --no-clone-bundle --optimized-fetch --prune -j2 $(cat /tmp/chunk-06) > /tmp/probe/sync-7.log 2>&1 && { ok=1; break; }
+            echo "tentativa $t falhou:"
+            grep -a -iE "error|fatal|fail" /tmp/probe/sync-7.log | tail -n 8 || true
+            sleep 20
+          done
+          echo "sync_ok=$ok"
+          df -h / > /tmp/probe/df-7.txt; cat /tmp/probe/df-7.txt
+          [ "$ok" = "1" ]
+
+      - name: Upload rastro parte 7
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: df-7
+          path: |
+            /tmp/probe/df-7.txt
+            /tmp/probe/sync-7.log
+
+      - name: Sync parte 8/8
+        working-directory: /home/runner/evo
+        timeout-minutes: 55
+        run: |
+          ok=0
+          for t in 1 2 3; do
+            echo "=== parte 8 tentativa $t ==="
+            repo sync -c --no-tags --no-clone-bundle --optimized-fetch --prune -j2 $(cat /tmp/chunk-07) > /tmp/probe/sync-8.log 2>&1 && { ok=1; break; }
+            echo "tentativa $t falhou:"
+            grep -a -iE "error|fatal|fail" /tmp/probe/sync-8.log | tail -n 8 || true
+            sleep 20
+          done
+          echo "sync_ok=$ok"
+          df -h / > /tmp/probe/df-8.txt; cat /tmp/probe/df-8.txt
+          [ "$ok" = "1" ]
+          FREE_GB=$(df --output=avail -BG / | tail -n 1 | tr -dc '0-9')
+          echo "livre: ${FREE_GB}GB"
+          if [ "$FREE_GB" -lt 15 ]; then echo "FALHA: disco insuficiente para build"; exit 1; fi
+
+      - name: Upload rastro parte 8
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: df-8
+          path: |
+            /tmp/probe/df-8.txt
+            /tmp/probe/sync-8.log
 
       - name: Validar trio + lunch
         working-directory: /home/runner/evo
