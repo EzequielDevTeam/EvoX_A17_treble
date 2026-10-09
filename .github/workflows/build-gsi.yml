@@ -1,0 +1,43 @@
+name: EvoX A17 GSI (pioneiro)
+
+on:
+  workflow_dispatch:
+    inputs:
+      sync_only:
+        description: 'Só sincronizar (sem compilar)'
+        required: false
+        default: 'true'
+
+jobs:
+  sync:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Espaço inicial
+        run: df -h / && free -h
+
+      - name: Instalar repo + deps
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq repo bc bison flex libssl-dev 2>&1 | tail -n 2
+          mkdir -p ~/evo && cd ~/evo
+
+      - name: Repo init (EvoX cnb + trio Doze-off)
+        working-directory: /home/runner/evo
+        run: |
+          repo init -u https://github.com/EzequielDevTeam/EvoX_A17_treble -b main -m EvoX_A17.xml --depth=1 --git-lfs
+        continue-on-error: false
+
+      - name: Repo sync (shallow, sem tags)
+        working-directory: /home/runner/evo
+        timeout-minutes: 300
+        run: |
+          repo sync -c --no-tags --no-clone-bundle -j$(nproc --all) 2>&1 | tail -n 5
+          echo "=== DISCO APOS SYNC ==="
+          df -h /
+
+      - name: Validar trio + lunch
+        working-directory: /home/runner/evo
+        run: |
+          ls device/phh/treble/evox_gsi.mk vendor/hardware_overlay/overlay.mk treble_app/TrebleApp.apk
+          source build/envsetup.sh
+          lunch evox_gsi-userdebug
