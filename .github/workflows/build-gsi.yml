@@ -52,7 +52,7 @@ jobs:
         working-directory: /home/runner/evo
         timeout-minutes: 100
         run: |
-          ( while true; do echo "=== $(date -u +%H:%M:%S) ==="; df -h / | tail -n 2; du -sh .repo 2>/dev/null || true; sleep 120; done > /tmp/probe/beat-1.log 2>&1 & echo $! > /tmp/probe/beat-1.pid )
+          ( while true; do echo "=== $(date -u +%H:%M:%S) ==="; df -h / | tail -n 2; du -sh .repo 2>/dev/null || true; sleep 60; done > /tmp/probe/beat-1.log 2>&1 & echo $! > /tmp/probe/beat-1.pid )
           df -h / > /tmp/probe/df-1.txt
           ok=0
           for t in 1 2 3; do
@@ -82,7 +82,7 @@ jobs:
         working-directory: /home/runner/evo
         timeout-minutes: 100
         run: |
-          ( while true; do echo "=== $(date -u +%H:%M:%S) ==="; df -h / | tail -n 2; du -sh .repo 2>/dev/null || true; sleep 120; done > /tmp/probe/beat-2.log 2>&1 & echo $! > /tmp/probe/beat-2.pid )
+          ( while true; do echo "=== $(date -u +%H:%M:%S) ==="; df -h / | tail -n 2; du -sh .repo 2>/dev/null || true; sleep 60; done > /tmp/probe/beat-2.log 2>&1 & echo $! > /tmp/probe/beat-2.pid )
           df -h / > /tmp/probe/df-2.txt
           ok=0
           for t in 1 2 3; do
@@ -112,7 +112,7 @@ jobs:
         working-directory: /home/runner/evo
         timeout-minutes: 100
         run: |
-          ( while true; do echo "=== $(date -u +%H:%M:%S) ==="; df -h / | tail -n 2; du -sh .repo 2>/dev/null || true; sleep 120; done > /tmp/probe/beat-3.log 2>&1 & echo $! > /tmp/probe/beat-3.pid )
+          ( while true; do echo "=== $(date -u +%H:%M:%S) ==="; df -h / | tail -n 2; du -sh .repo 2>/dev/null || true; sleep 60; done > /tmp/probe/beat-3.log 2>&1 & echo $! > /tmp/probe/beat-3.pid )
           df -h / > /tmp/probe/df-3.txt
           ok=0
           for t in 1 2 3; do
@@ -142,7 +142,7 @@ jobs:
         working-directory: /home/runner/evo
         timeout-minutes: 100
         run: |
-          ( while true; do echo "=== $(date -u +%H:%M:%S) ==="; df -h / | tail -n 2; du -sh .repo 2>/dev/null || true; sleep 120; done > /tmp/probe/beat-4.log 2>&1 & echo $! > /tmp/probe/beat-4.pid )
+          ( while true; do echo "=== $(date -u +%H:%M:%S) ==="; df -h / | tail -n 2; du -sh .repo 2>/dev/null || true; sleep 60; done > /tmp/probe/beat-4.log 2>&1 & echo $! > /tmp/probe/beat-4.pid )
           df -h / > /tmp/probe/df-4.txt
           ok=0
           for t in 1 2 3; do
@@ -172,7 +172,7 @@ jobs:
         working-directory: /home/runner/evo
         timeout-minutes: 100
         run: |
-          ( while true; do echo "=== $(date -u +%H:%M:%S) ==="; df -h / | tail -n 2; du -sh .repo 2>/dev/null || true; sleep 120; done > /tmp/probe/beat-5.log 2>&1 & echo $! > /tmp/probe/beat-5.pid )
+          ( while true; do echo "=== $(date -u +%H:%M:%S) ==="; df -h / | tail -n 2; du -sh .repo 2>/dev/null || true; sleep 60; done > /tmp/probe/beat-5.log 2>&1 & echo $! > /tmp/probe/beat-5.pid )
           df -h / > /tmp/probe/df-5.txt
           ok=0
           for t in 1 2 3; do
@@ -202,7 +202,7 @@ jobs:
         working-directory: /home/runner/evo
         timeout-minutes: 100
         run: |
-          ( while true; do echo "=== $(date -u +%H:%M:%S) ==="; df -h / | tail -n 2; du -sh .repo 2>/dev/null || true; sleep 120; done > /tmp/probe/beat-6.log 2>&1 & echo $! > /tmp/probe/beat-6.pid )
+          ( while true; do echo "=== $(date -u +%H:%M:%S) ==="; df -h / | tail -n 2; du -sh .repo 2>/dev/null || true; sleep 60; done > /tmp/probe/beat-6.log 2>&1 & echo $! > /tmp/probe/beat-6.pid )
           df -h / > /tmp/probe/df-6.txt
           ok=0
           for t in 1 2 3; do
@@ -232,7 +232,7 @@ jobs:
         working-directory: /home/runner/evo
         timeout-minutes: 100
         run: |
-          ( while true; do echo "=== $(date -u +%H:%M:%S) ==="; df -h / | tail -n 2; du -sh .repo 2>/dev/null || true; sleep 120; done > /tmp/probe/beat-7.log 2>&1 & echo $! > /tmp/probe/beat-7.pid )
+          ( while true; do echo "=== $(date -u +%H:%M:%S) ==="; df -h / | tail -n 2; du -sh .repo 2>/dev/null || true; sleep 60; done > /tmp/probe/beat-7.log 2>&1 & echo $! > /tmp/probe/beat-7.pid )
           df -h / > /tmp/probe/df-7.txt
           ok=0
           for t in 1 2 3; do
@@ -262,7 +262,7 @@ jobs:
         working-directory: /home/runner/evo
         timeout-minutes: 100
         run: |
-          ( while true; do echo "=== $(date -u +%H:%M:%S) ==="; df -h / | tail -n 2; du -sh .repo 2>/dev/null || true; sleep 120; done > /tmp/probe/beat-8.log 2>&1 & echo $! > /tmp/probe/beat-8.pid )
+          ( while true; do echo "=== $(date -u +%H:%M:%S) ==="; df -h / | tail -n 2; du -sh .repo 2>/dev/null || true; sleep 60; done > /tmp/probe/beat-8.log 2>&1 & echo $! > /tmp/probe/beat-8.pid )
           df -h / > /tmp/probe/df-8.txt
           ok=0
           for t in 1 2 3; do
