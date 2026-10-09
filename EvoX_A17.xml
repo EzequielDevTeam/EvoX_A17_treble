@@ -1062,11 +1062,69 @@
   <include name="snippets/evolution.xml" />
   <include name="snippets/lineage.xml" />
   <!-- ===== Trio Doze-off (GSI Treble) ===== -->
-  <!-- device tree AINDA no branch android-16.0: port para A17 pendente -->
   <remote  name="doze"
            fetch="https://github.com/Doze-off" />
   <project path="device/phh/treble" name="device_phh_treble-doze" remote="doze" revision="android-16.0" clone-depth="1" />
   <project path="vendor/hardware_overlay" name="vendor_hardware_overlay" remote="doze" revision="pie" clone-depth="1" />
   <project path="treble_app" name="treble_app-doze" remote="doze" revision="master" clone-depth="1" />
+
+  <!-- ===== Dieta A17: fora da GSI (re-adicionar sob erro visivel) ===== -->
+  <remove-project name="device/google/atv" />
+  <remove-project name="device/google/contexthub" />
+  <remove-project name="device/google/cuttlefish" />
+  <remove-project name="device/google/cuttlefish_prebuilts" />
+  <remove-project name="device/google/cuttlefish_vmm" />
+  <remove-project name="device/google/sdv" />
+  <remove-project name="device/google/sdv_display_safety" />
+  <remove-project name="device/google/trout" />
+  <remove-project name="device/google_car" />
+  <remove-project name="device/sample" />
+  <remove-project name="cts" />
+  <remove-project name="developers/build" />
+  <remove-project name="kernel/prebuilts/6.1/arm64" />
+  <remove-project name="kernel/prebuilts/6.1/x86_64" />
+  <remove-project name="kernel/prebuilts/6.12/arm64" />
+  <remove-project name="kernel/prebuilts/6.12/x86_64" />
+  <remove-project name="kernel/prebuilts/6.18/arm64" />
+  <remove-project name="kernel/prebuilts/6.18/x86_64" />
+  <remove-project name="kernel/prebuilts/6.6/arm64" />
+  <remove-project name="kernel/prebuilts/6.6/x86_64" />
+  <remove-project name="kernel/prebuilts/common-modules/trusty/6.12/arm64" />
+  <remove-project name="kernel/prebuilts/common-modules/trusty/6.6/arm64" />
+  <remove-project name="kernel/prebuilts/common-modules/virtual-device/6.1/arm64" />
+  <remove-project name="kernel/prebuilts/common-modules/virtual-device/6.1/x86-64" />
+  <remove-project name="kernel/prebuilts/common-modules/virtual-device/6.12/arm64" />
+  <remove-project name="kernel/prebuilts/common-modules/virtual-device/6.12/x86-64" />
+  <remove-project name="kernel/prebuilts/common-modules/virtual-device/6.18/arm64" />
+  <remove-project name="kernel/prebuilts/common-modules/virtual-device/6.18/x86-64" />
+  <remove-project name="kernel/prebuilts/common-modules/virtual-device/6.6/arm64" />
+  <remove-project name="kernel/prebuilts/common-modules/virtual-device/6.6/x86-64" />
+  <remove-project name="kernel/prebuilts/common-modules/virtual-device/mainline/arm64" />
+  <remove-project name="kernel/prebuilts/common-modules/virtual-device/mainline/x86-64" />
+  <remove-project name="kernel/prebuilts/mainline/arm64" />
+  <remove-project name="kernel/prebuilts/mainline/x86_64" />
+  <remove-project name="kernel/tests" />
+  <remove-project name="trusty/device/arm/generic-arm64" />
+  <remove-project name="trusty/device/arm/vexpress-a15" />
+  <remove-project name="trusty/device/common" />
+  <remove-project name="trusty/device/desktop" />
+  <remove-project name="trusty/device/nxp/imx7d" />
+  <remove-project name="trusty/device/x86/generic-x86_64" />
+  <remove-project name="trusty/hardware/nxp" />
+  <remove-project name="trusty/host/common" />
+  <remove-project name="trusty/kernel" />
+  <remove-project name="trusty/user/app/authmgr" />
+  <remove-project name="trusty/user/app/avb" />
+  <remove-project name="trusty/user/app/cast-auth" />
+  <remove-project name="trusty/user/app/confirmationui" />
+  <remove-project name="trusty/user/app/gatekeeper" />
+  <remove-project name="trusty/user/app/keymaster" />
+  <remove-project name="trusty/user/app/keymint" />
+  <remove-project name="trusty/user/app/sample" />
+  <remove-project name="trusty/user/app/secretkeeper" />
+  <remove-project name="trusty/user/app/storage" />
+  <remove-project name="trusty/user/base" />
+  <remove-project name="trusty/user/desktop" />
+  <remove-project name="trusty/vendor/google/aosp" />
 
 </manifest>
