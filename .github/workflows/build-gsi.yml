@@ -50,18 +50,22 @@ jobs:
 
       - name: Sync parte 1/8
         working-directory: /home/runner/evo
-        timeout-minutes: 55
+        timeout-minutes: 100
         run: |
+          ( while true; do echo "=== $(date -u +%H:%M:%S) ==="; df -h / | tail -n 2; du -sh .repo 2>/dev/null || true; sleep 120; done > /tmp/probe/beat-1.log 2>&1 & echo $! > /tmp/probe/beat-1.pid )
+          df -h / > /tmp/probe/df-1.txt
           ok=0
           for t in 1 2 3; do
             echo "=== parte 1 tentativa $t ==="
-            repo sync -c --no-tags --no-clone-bundle --optimized-fetch --prune -j2 $(cat /tmp/chunk-00) > /tmp/probe/sync-1.log 2>&1 && { ok=1; break; }
+            repo sync -c --no-tags --no-clone-bundle --optimized-fetch --prune -j4 $(cat /tmp/chunk-00) > /tmp/probe/sync-1.log 2>&1 && { ok=1; break; }
             echo "tentativa $t falhou:"
             grep -a -iE "error|fatal|fail" /tmp/probe/sync-1.log | tail -n 8 || true
+            df -h / >> /tmp/probe/df-1.txt
             sleep 20
           done
+          kill $(cat /tmp/probe/beat-1.pid) 2>/dev/null || true
           echo "sync_ok=$ok"
-          df -h / > /tmp/probe/df-1.txt; cat /tmp/probe/df-1.txt
+          df -h / >> /tmp/probe/df-1.txt; cat /tmp/probe/df-1.txt
           [ "$ok" = "1" ]
 
       - name: Upload rastro parte 1
@@ -72,21 +76,26 @@ jobs:
           path: |
             /tmp/probe/df-1.txt
             /tmp/probe/sync-1.log
+            /tmp/probe/beat-1.log
 
       - name: Sync parte 2/8
         working-directory: /home/runner/evo
-        timeout-minutes: 55
+        timeout-minutes: 100
         run: |
+          ( while true; do echo "=== $(date -u +%H:%M:%S) ==="; df -h / | tail -n 2; du -sh .repo 2>/dev/null || true; sleep 120; done > /tmp/probe/beat-2.log 2>&1 & echo $! > /tmp/probe/beat-2.pid )
+          df -h / > /tmp/probe/df-2.txt
           ok=0
           for t in 1 2 3; do
             echo "=== parte 2 tentativa $t ==="
-            repo sync -c --no-tags --no-clone-bundle --optimized-fetch --prune -j2 $(cat /tmp/chunk-01) > /tmp/probe/sync-2.log 2>&1 && { ok=1; break; }
+            repo sync -c --no-tags --no-clone-bundle --optimized-fetch --prune -j4 $(cat /tmp/chunk-01) > /tmp/probe/sync-2.log 2>&1 && { ok=1; break; }
             echo "tentativa $t falhou:"
             grep -a -iE "error|fatal|fail" /tmp/probe/sync-2.log | tail -n 8 || true
+            df -h / >> /tmp/probe/df-2.txt
             sleep 20
           done
+          kill $(cat /tmp/probe/beat-2.pid) 2>/dev/null || true
           echo "sync_ok=$ok"
-          df -h / > /tmp/probe/df-2.txt; cat /tmp/probe/df-2.txt
+          df -h / >> /tmp/probe/df-2.txt; cat /tmp/probe/df-2.txt
           [ "$ok" = "1" ]
 
       - name: Upload rastro parte 2
@@ -97,21 +106,26 @@ jobs:
           path: |
             /tmp/probe/df-2.txt
             /tmp/probe/sync-2.log
+            /tmp/probe/beat-2.log
 
       - name: Sync parte 3/8
         working-directory: /home/runner/evo
-        timeout-minutes: 55
+        timeout-minutes: 100
         run: |
+          ( while true; do echo "=== $(date -u +%H:%M:%S) ==="; df -h / | tail -n 2; du -sh .repo 2>/dev/null || true; sleep 120; done > /tmp/probe/beat-3.log 2>&1 & echo $! > /tmp/probe/beat-3.pid )
+          df -h / > /tmp/probe/df-3.txt
           ok=0
           for t in 1 2 3; do
             echo "=== parte 3 tentativa $t ==="
-            repo sync -c --no-tags --no-clone-bundle --optimized-fetch --prune -j2 $(cat /tmp/chunk-02) > /tmp/probe/sync-3.log 2>&1 && { ok=1; break; }
+            repo sync -c --no-tags --no-clone-bundle --optimized-fetch --prune -j4 $(cat /tmp/chunk-02) > /tmp/probe/sync-3.log 2>&1 && { ok=1; break; }
             echo "tentativa $t falhou:"
             grep -a -iE "error|fatal|fail" /tmp/probe/sync-3.log | tail -n 8 || true
+            df -h / >> /tmp/probe/df-3.txt
             sleep 20
           done
+          kill $(cat /tmp/probe/beat-3.pid) 2>/dev/null || true
           echo "sync_ok=$ok"
-          df -h / > /tmp/probe/df-3.txt; cat /tmp/probe/df-3.txt
+          df -h / >> /tmp/probe/df-3.txt; cat /tmp/probe/df-3.txt
           [ "$ok" = "1" ]
 
       - name: Upload rastro parte 3
@@ -122,21 +136,26 @@ jobs:
           path: |
             /tmp/probe/df-3.txt
             /tmp/probe/sync-3.log
+            /tmp/probe/beat-3.log
 
       - name: Sync parte 4/8
         working-directory: /home/runner/evo
-        timeout-minutes: 55
+        timeout-minutes: 100
         run: |
+          ( while true; do echo "=== $(date -u +%H:%M:%S) ==="; df -h / | tail -n 2; du -sh .repo 2>/dev/null || true; sleep 120; done > /tmp/probe/beat-4.log 2>&1 & echo $! > /tmp/probe/beat-4.pid )
+          df -h / > /tmp/probe/df-4.txt
           ok=0
           for t in 1 2 3; do
             echo "=== parte 4 tentativa $t ==="
-            repo sync -c --no-tags --no-clone-bundle --optimized-fetch --prune -j2 $(cat /tmp/chunk-03) > /tmp/probe/sync-4.log 2>&1 && { ok=1; break; }
+            repo sync -c --no-tags --no-clone-bundle --optimized-fetch --prune -j4 $(cat /tmp/chunk-03) > /tmp/probe/sync-4.log 2>&1 && { ok=1; break; }
             echo "tentativa $t falhou:"
             grep -a -iE "error|fatal|fail" /tmp/probe/sync-4.log | tail -n 8 || true
+            df -h / >> /tmp/probe/df-4.txt
             sleep 20
           done
+          kill $(cat /tmp/probe/beat-4.pid) 2>/dev/null || true
           echo "sync_ok=$ok"
-          df -h / > /tmp/probe/df-4.txt; cat /tmp/probe/df-4.txt
+          df -h / >> /tmp/probe/df-4.txt; cat /tmp/probe/df-4.txt
           [ "$ok" = "1" ]
 
       - name: Upload rastro parte 4
@@ -147,21 +166,26 @@ jobs:
           path: |
             /tmp/probe/df-4.txt
             /tmp/probe/sync-4.log
+            /tmp/probe/beat-4.log
 
       - name: Sync parte 5/8
         working-directory: /home/runner/evo
-        timeout-minutes: 55
+        timeout-minutes: 100
         run: |
+          ( while true; do echo "=== $(date -u +%H:%M:%S) ==="; df -h / | tail -n 2; du -sh .repo 2>/dev/null || true; sleep 120; done > /tmp/probe/beat-5.log 2>&1 & echo $! > /tmp/probe/beat-5.pid )
+          df -h / > /tmp/probe/df-5.txt
           ok=0
           for t in 1 2 3; do
             echo "=== parte 5 tentativa $t ==="
-            repo sync -c --no-tags --no-clone-bundle --optimized-fetch --prune -j2 $(cat /tmp/chunk-04) > /tmp/probe/sync-5.log 2>&1 && { ok=1; break; }
+            repo sync -c --no-tags --no-clone-bundle --optimized-fetch --prune -j4 $(cat /tmp/chunk-04) > /tmp/probe/sync-5.log 2>&1 && { ok=1; break; }
             echo "tentativa $t falhou:"
             grep -a -iE "error|fatal|fail" /tmp/probe/sync-5.log | tail -n 8 || true
+            df -h / >> /tmp/probe/df-5.txt
             sleep 20
           done
+          kill $(cat /tmp/probe/beat-5.pid) 2>/dev/null || true
           echo "sync_ok=$ok"
-          df -h / > /tmp/probe/df-5.txt; cat /tmp/probe/df-5.txt
+          df -h / >> /tmp/probe/df-5.txt; cat /tmp/probe/df-5.txt
           [ "$ok" = "1" ]
 
       - name: Upload rastro parte 5
@@ -172,21 +196,26 @@ jobs:
           path: |
             /tmp/probe/df-5.txt
             /tmp/probe/sync-5.log
+            /tmp/probe/beat-5.log
 
       - name: Sync parte 6/8
         working-directory: /home/runner/evo
-        timeout-minutes: 55
+        timeout-minutes: 100
         run: |
+          ( while true; do echo "=== $(date -u +%H:%M:%S) ==="; df -h / | tail -n 2; du -sh .repo 2>/dev/null || true; sleep 120; done > /tmp/probe/beat-6.log 2>&1 & echo $! > /tmp/probe/beat-6.pid )
+          df -h / > /tmp/probe/df-6.txt
           ok=0
           for t in 1 2 3; do
             echo "=== parte 6 tentativa $t ==="
-            repo sync -c --no-tags --no-clone-bundle --optimized-fetch --prune -j2 $(cat /tmp/chunk-05) > /tmp/probe/sync-6.log 2>&1 && { ok=1; break; }
+            repo sync -c --no-tags --no-clone-bundle --optimized-fetch --prune -j4 $(cat /tmp/chunk-05) > /tmp/probe/sync-6.log 2>&1 && { ok=1; break; }
             echo "tentativa $t falhou:"
             grep -a -iE "error|fatal|fail" /tmp/probe/sync-6.log | tail -n 8 || true
+            df -h / >> /tmp/probe/df-6.txt
             sleep 20
           done
+          kill $(cat /tmp/probe/beat-6.pid) 2>/dev/null || true
           echo "sync_ok=$ok"
-          df -h / > /tmp/probe/df-6.txt; cat /tmp/probe/df-6.txt
+          df -h / >> /tmp/probe/df-6.txt; cat /tmp/probe/df-6.txt
           [ "$ok" = "1" ]
 
       - name: Upload rastro parte 6
@@ -197,21 +226,26 @@ jobs:
           path: |
             /tmp/probe/df-6.txt
             /tmp/probe/sync-6.log
+            /tmp/probe/beat-6.log
 
       - name: Sync parte 7/8
         working-directory: /home/runner/evo
-        timeout-minutes: 55
+        timeout-minutes: 100
         run: |
+          ( while true; do echo "=== $(date -u +%H:%M:%S) ==="; df -h / | tail -n 2; du -sh .repo 2>/dev/null || true; sleep 120; done > /tmp/probe/beat-7.log 2>&1 & echo $! > /tmp/probe/beat-7.pid )
+          df -h / > /tmp/probe/df-7.txt
           ok=0
           for t in 1 2 3; do
             echo "=== parte 7 tentativa $t ==="
-            repo sync -c --no-tags --no-clone-bundle --optimized-fetch --prune -j2 $(cat /tmp/chunk-06) > /tmp/probe/sync-7.log 2>&1 && { ok=1; break; }
+            repo sync -c --no-tags --no-clone-bundle --optimized-fetch --prune -j4 $(cat /tmp/chunk-06) > /tmp/probe/sync-7.log 2>&1 && { ok=1; break; }
             echo "tentativa $t falhou:"
             grep -a -iE "error|fatal|fail" /tmp/probe/sync-7.log | tail -n 8 || true
+            df -h / >> /tmp/probe/df-7.txt
             sleep 20
           done
+          kill $(cat /tmp/probe/beat-7.pid) 2>/dev/null || true
           echo "sync_ok=$ok"
-          df -h / > /tmp/probe/df-7.txt; cat /tmp/probe/df-7.txt
+          df -h / >> /tmp/probe/df-7.txt; cat /tmp/probe/df-7.txt
           [ "$ok" = "1" ]
 
       - name: Upload rastro parte 7
@@ -222,21 +256,26 @@ jobs:
           path: |
             /tmp/probe/df-7.txt
             /tmp/probe/sync-7.log
+            /tmp/probe/beat-7.log
 
       - name: Sync parte 8/8
         working-directory: /home/runner/evo
-        timeout-minutes: 55
+        timeout-minutes: 100
         run: |
+          ( while true; do echo "=== $(date -u +%H:%M:%S) ==="; df -h / | tail -n 2; du -sh .repo 2>/dev/null || true; sleep 120; done > /tmp/probe/beat-8.log 2>&1 & echo $! > /tmp/probe/beat-8.pid )
+          df -h / > /tmp/probe/df-8.txt
           ok=0
           for t in 1 2 3; do
             echo "=== parte 8 tentativa $t ==="
-            repo sync -c --no-tags --no-clone-bundle --optimized-fetch --prune -j2 $(cat /tmp/chunk-07) > /tmp/probe/sync-8.log 2>&1 && { ok=1; break; }
+            repo sync -c --no-tags --no-clone-bundle --optimized-fetch --prune -j4 $(cat /tmp/chunk-07) > /tmp/probe/sync-8.log 2>&1 && { ok=1; break; }
             echo "tentativa $t falhou:"
             grep -a -iE "error|fatal|fail" /tmp/probe/sync-8.log | tail -n 8 || true
+            df -h / >> /tmp/probe/df-8.txt
             sleep 20
           done
+          kill $(cat /tmp/probe/beat-8.pid) 2>/dev/null || true
           echo "sync_ok=$ok"
-          df -h / > /tmp/probe/df-8.txt; cat /tmp/probe/df-8.txt
+          df -h / >> /tmp/probe/df-8.txt; cat /tmp/probe/df-8.txt
           [ "$ok" = "1" ]
           FREE_GB=$(df --output=avail -BG / | tail -n 1 | tr -dc '0-9')
           echo "livre: ${FREE_GB}GB"
@@ -250,6 +289,7 @@ jobs:
           path: |
             /tmp/probe/df-8.txt
             /tmp/probe/sync-8.log
+            /tmp/probe/beat-8.log
 
       - name: Validar trio + lunch
         working-directory: /home/runner/evo
