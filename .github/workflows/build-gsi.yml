@@ -20,13 +20,15 @@ jobs:
           df -h / && free -h
           mkdir -p /tmp/probe && df -h / > /tmp/probe/df-cleanup.txt
 
-      - name: Swap de emergencia (16G contra OOM)
+      - name: Swap de emergencia (16G contra OOM, opcional)
+        continue-on-error: true
         run: |
-          sudo fallocate -l 16G /swapfile 2>/dev/null || sudo dd if=/dev/zero of=/swapfile bs=1G count=16 status=none
-          sudo chmod 600 /swapfile && sudo mkswap /swapfile && sudo swapon /swapfile
+          ( sudo fallocate -l 16G /swapfile 2>/dev/null || sudo dd if=/dev/zero of=/swapfile bs=1G count=16 status=none ) || true
+          sudo chmod 600 /swapfile && sudo mkswap /swapfile && sudo swapon /swapfile || echo "SEM SWAP (runner nao permite) - seguindo sem"
           free -h; df -h /
 
       - name: Upload df pos-limpeza
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: df-cleanup
