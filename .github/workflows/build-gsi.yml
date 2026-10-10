@@ -20,6 +20,12 @@ jobs:
           df -h / && free -h
           mkdir -p /tmp/probe && df -h / > /tmp/probe/df-cleanup.txt
 
+      - name: Swap de emergencia (16G contra OOM)
+        run: |
+          sudo fallocate -l 16G /swapfile 2>/dev/null || sudo dd if=/dev/zero of=/swapfile bs=1G count=16 status=none
+          sudo chmod 600 /swapfile && sudo mkswap /swapfile && sudo swapon /swapfile
+          free -h; df -h /
+
       - name: Upload df pos-limpeza
         uses: actions/upload-artifact@v4
         with:
@@ -39,6 +45,21 @@ jobs:
         working-directory: /home/runner/evo
         run: |
           repo init -u https://github.com/EzequielDevTeam/EvoX_A17_treble -b main -m EvoX_A17.xml --depth=1 --git-lfs
+
+      - name: Probe rapido (trio Doze-off)
+        working-directory: /home/runner/evo
+        timeout-minutes: 10
+        run: |
+          repo sync -c --no-tags --no-clone-bundle -j4 device/phh/treble vendor/hardware_overlay treble_app 2>&1 | tail -n 3
+          ls device/phh/treble/evox_gsi.mk vendor/hardware_overlay/overlay.mk treble_app/TrebleApp.apk
+          free -h > /tmp/probe/probe-trio.txt; df -h / >> /tmp/probe/probe-trio.txt
+
+      - name: Upload probe trio
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: probe-trio
+          path: /tmp/probe/probe-trio.txt
 
       - name: Dividir sync em 8 partes
         working-directory: /home/runner/evo
