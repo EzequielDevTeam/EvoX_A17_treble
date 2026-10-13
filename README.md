@@ -1,28 +1,26 @@
 # EvoX A17 GSI Treble (pioneiro)
 
-Evolution-X base **Android 17** (`cnb`, `android-17.0.0_r1`) + trio Doze-off, para GSI TrebleDroid. Ninguém fez ainda — este repo é a tentativa.
+Evolution-X no **Android 17** (`cnb`) com o trio Doze-off pra GSI TrebleDroid. Ninguém fez ainda — esse repo é a tentativa, então espera poeira.
 
-## Base
+## O que tem aqui
 
-| Parte | Origem | Branch |
-|---|---|---|
-| Manifest/ROM | `Evolution-X/manifest` | `cnb` (A17) |
-| Device tree | `Doze-off/device_phh_treble-doze` | `android-16.0` (⚠️ port p/ A17 pendente) |
-| Overlays | `Doze-off/vendor_hardware_overlay` | `pie` |
-| Treble app | `Doze-off/treble_app-doze` | `master` |
+- **ROM:** `Evolution-X/manifest` no `cnb` (A17)
+- **Device tree:** `Doze-off/device_phh_treble-doze` (ainda no `android-16.0` — port pra A17 pendente, é o próximo trampo)
+- **Overlays:** `Doze-off/vendor_hardware_overlay`
+- **Treble app:** `Doze-off/treble_app-doze`
 
-Manifest: `EvoX_A17.xml` (EvoX cnb + trio).
+Manifest: `EvoX_A17.xml`.
 
-## Build (nuvem, nunca no telefone)
+## Build (na nuvem, nada no telefone)
 
-Workflow `build-gsi.yml` (manual). v1 = probe de sync + `lunch evox_gsi-userdebug`. Sem nada baixado no telefone.
+Workflow `build-gsi.yml` (manual). Primeiro valida o sync + `lunch evox_gsi-userdebug`, depois vem o `mka`.
 
-## Riscos conhecidos
+## Onde vai doer
 
-1. Device tree A16 sobre base A17: esperar erros de sepolicy/API — port iterativo.
-2. Sync full AOSP pode estourar disco do runner — v2 apara grupos se precisar.
-3. Integração do `TrebleApp.apk` prebuilt a confirmar no primeiro build.
-4. Teste via DSU Sideloader antes de flash (ver README Doze-off).
+1. Device tree A16 em base A17: sepolicy e API vão reclamar — port iterativo.
+2. Sync full é pesado pro runner: se estourar disco, apara grupos e tenta de novo.
+3. `TrebleApp.apk` prebuilt: confirmar a integração no primeiro build que passar.
+4. Teste via DSU Sideloader antes de pensar em flash (ver README do Doze-off).
 
 ## Suporte
 
