@@ -798,6 +798,20 @@ jobs:
           name: g-30-platform_testing
           path: /tmp/probe/g-30.log
 
+      - name: Mapa de gordura (du por diretorio)
+        working-directory: /home/runner/evo
+        timeout-minutes: 20
+        run: |
+          du -d1 -m . 2>/dev/null | sort -rn | head -n 40 | tee /tmp/probe/du-top.txt
+          du -d1 -m external prebuilts packages vendor hardware 2>/dev/null | sort -rn | head -n 40 | tee -a /tmp/probe/du-top.txt || true
+
+      - name: Upload mapa de gordura
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: du-map
+          path: /tmp/probe/du-top.txt
+
       - name: Vigia final de disco
         working-directory: /home/runner/evo
         run: |
