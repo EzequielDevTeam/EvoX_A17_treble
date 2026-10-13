@@ -373,7 +373,7 @@ jobs:
           name: g-13-tools
           path: /tmp/probe/g-13.log
 
-      - name: Sync [hardware] (105 projetos)
+      - name: Sync [hardware] (103 projetos)
         working-directory: /home/runner/evo
         timeout-minutes: 60
         run: |
@@ -382,7 +382,7 @@ jobs:
           ok=0
           for t in 1 2; do
             echo "== tentativa $t ==" | tee -a /tmp/probe/g-14.log
-            repo sync -c --no-tags --no-clone-bundle --optimized-fetch --prune -j4 hardware/broadcom/libbt hardware/broadcom/wlan hardware/google/apf hardware/google/av hardware/google/camera hardware/google/gfxstream hardware/google/interfaces hardware/libhardware hardware/libhardware_legacy hardware/nxp/keymint hardware/nxp/nfc hardware/nxp/nxp_mcu_loader hardware/nxp/secure_element hardware/nxp/uwb hardware/nxp/weaver hardware/qcom/wlan hardware/ril hardware/samsung/nfc hardware/sdv/interfaces hardware/st/nfc hardware/st/secure_element hardware/st/secure_element2 hardware/synaptics/wlan hardware/telink/atv/refDesignRcu hardware/ti/am57x hardware/google/pixel hardware/interfaces hardware/lineage/compat hardware/lineage/generic-ims hardware/lineage/interfaces hardware/google/pixel-sepolicy hardware/knowles/athletico/sound_trigger_hal hardware/qcom/sm7250/display hardware/qcom/sm7250/gps hardware/qcom/sm8150/display hardware/qcom/sm8150/gps hardware/qcom-caf/bootctrl hardware/qcom-caf/common hardware/qcom-caf/msm8953/audio hardware/qcom-caf/msm8953/display hardware/qcom-caf/msm8953/media hardware/qcom-caf/msm8996/audio hardware/qcom-caf/msm8996/display hardware/qcom-caf/msm8996/media hardware/qcom-caf/sdm660/audio hardware/qcom-caf/sdm660/display hardware/qcom-caf/sdm660/media hardware/qcom-caf/sm8150/audio hardware/qcom-caf/sm8150/display hardware/qcom-caf/sm8150/media hardware/qcom-caf/sm8250/audio hardware/qcom-caf/sm8250/display hardware/qcom-caf/sm8250/media hardware/qcom-caf/sm8350/audio hardware/qcom-caf/sm8350/display hardware/qcom-caf/sm8450/audio/agm hardware/qcom-caf/sm8450/audio/graphservices hardware/qcom-caf/sm8450/audio/pal hardware/qcom-caf/sm8450/audio/primary-hal hardware/qcom-caf/sm8450/data-ipa-cfg-mgr hardware/qcom-caf/sm8450/display hardware/qcom-caf/sm8450-6.6/audio/agm hardware/qcom-caf/sm8450-6.6/audio/graphservices hardware/qcom-caf/sm8450-6.6/audio/pal hardware/qcom-caf/sm8450-6.6/audio/primary-hal hardware/qcom-caf/sm8450-6.6/data-ipa-cfg-mgr hardware/qcom-caf/sm8450-6.6/dataipa hardware/qcom-caf/sm8450-6.6/display/core hardware/qcom-caf/sm8450-6.6/display/hal hardware/qcom-caf/sm8450-6.6/display/intf hardware/qcom-caf/sm8550/audio/agm hardware/qcom-caf/sm8550/audio/graphservices hardware/qcom-caf/sm8550/audio/pal hardware/qcom-caf/sm8550/audio/primary-hal hardware/qcom-caf/sm8550/data-ipa-cfg-mgr hardware/qcom-caf/sm8550/dataipa hardware/qcom-caf/sm8550/display hardware/qcom-caf/sm8650/audio/agm hardware/qcom-caf/sm8650/audio/graphservices hardware/qcom-caf/sm8650/audio/pal hardware/qcom-caf/sm8650/audio/primary-hal hardware/qcom-caf/sm8650/data-ipa-cfg-mgr hardware/qcom-caf/sm8650/dataipa hardware/qcom-caf/sm8650/display hardware/qcom-caf/sm8750/audio/agm hardware/qcom-caf/sm8750/audio/graphservices hardware/qcom-caf/sm8750/audio/pal hardware/qcom-caf/sm8750/audio/primary-hal hardware/qcom-caf/sm8750/data-ipa-cfg-mgr hardware/qcom-caf/sm8750/dataipa hardware/qcom-caf/sm8750/display/core hardware/qcom-caf/sm8750/display/hal hardware/qcom-caf/sm8750/display/intf hardware/qcom-caf/sm8850/audio/agm hardware/qcom-caf/sm8850/audio/graphservices hardware/qcom-caf/sm8850/audio/pal hardware/qcom-caf/sm8850/audio/primary-hal hardware/qcom-caf/sm8850/data-ipa-cfg-mgr hardware/qcom-caf/sm8850/dataipa hardware/qcom-caf/sm8850/display/core hardware/qcom-caf/sm8850/display/hal hardware/qcom-caf/sm8850/display/intf hardware/qcom-caf/thermal hardware/qcom-caf/thermal-legacy-um hardware/qcom-caf/wlan >> /tmp/probe/g-14.log 2>&1 && { ok=1; break; }
+            repo sync -c --no-tags --no-clone-bundle --optimized-fetch --prune -j4 hardware/broadcom/libbt hardware/broadcom/wlan hardware/google/apf hardware/google/av hardware/google/camera hardware/google/gfxstream hardware/google/interfaces hardware/libhardware hardware/libhardware_legacy hardware/nxp/keymint hardware/nxp/nfc hardware/nxp/nxp_mcu_loader hardware/nxp/secure_element hardware/nxp/uwb hardware/nxp/weaver hardware/qcom/wlan hardware/ril hardware/samsung/nfc hardware/sdv/interfaces hardware/st/nfc hardware/st/secure_element hardware/st/secure_element2 hardware/synaptics/wlan hardware/telink/atv/refDesignRcu hardware/ti/am57x hardware/google/pixel hardware/interfaces hardware/lineage/compat hardware/lineage/generic-ims hardware/lineage/interfaces hardware/google/pixel-sepolicy hardware/knowles/athletico/sound_trigger_hal hardware/qcom/sm7250/display hardware/qcom/sm7250/gps hardware/qcom/sm8150/display hardware/qcom/sm8150/gps hardware/qcom-caf/msm8953/audio hardware/qcom-caf/msm8953/display hardware/qcom-caf/msm8953/media hardware/qcom-caf/msm8996/audio hardware/qcom-caf/msm8996/display hardware/qcom-caf/msm8996/media hardware/qcom-caf/sdm660/audio hardware/qcom-caf/sdm660/display hardware/qcom-caf/sdm660/media hardware/qcom-caf/sm8150/audio hardware/qcom-caf/sm8150/display hardware/qcom-caf/sm8150/media hardware/qcom-caf/sm8250/audio hardware/qcom-caf/sm8250/display hardware/qcom-caf/sm8250/media hardware/qcom-caf/sm8350/audio hardware/qcom-caf/sm8350/display hardware/qcom-caf/sm8450/audio/agm hardware/qcom-caf/sm8450/audio/graphservices hardware/qcom-caf/sm8450/audio/pal hardware/qcom-caf/sm8450/audio/primary-hal hardware/qcom-caf/sm8450/data-ipa-cfg-mgr hardware/qcom-caf/sm8450/display hardware/qcom-caf/sm8450-6.6/audio/agm hardware/qcom-caf/sm8450-6.6/audio/graphservices hardware/qcom-caf/sm8450-6.6/audio/pal hardware/qcom-caf/sm8450-6.6/audio/primary-hal hardware/qcom-caf/sm8450-6.6/data-ipa-cfg-mgr hardware/qcom-caf/sm8450-6.6/dataipa hardware/qcom-caf/sm8450-6.6/display/core hardware/qcom-caf/sm8450-6.6/display/hal hardware/qcom-caf/sm8450-6.6/display/intf hardware/qcom-caf/sm8550/audio/agm hardware/qcom-caf/sm8550/audio/graphservices hardware/qcom-caf/sm8550/audio/pal hardware/qcom-caf/sm8550/audio/primary-hal hardware/qcom-caf/sm8550/data-ipa-cfg-mgr hardware/qcom-caf/sm8550/dataipa hardware/qcom-caf/sm8550/display hardware/qcom-caf/sm8650/audio/agm hardware/qcom-caf/sm8650/audio/graphservices hardware/qcom-caf/sm8650/audio/pal hardware/qcom-caf/sm8650/audio/primary-hal hardware/qcom-caf/sm8650/data-ipa-cfg-mgr hardware/qcom-caf/sm8650/dataipa hardware/qcom-caf/sm8650/display hardware/qcom-caf/sm8750/audio/agm hardware/qcom-caf/sm8750/audio/graphservices hardware/qcom-caf/sm8750/audio/pal hardware/qcom-caf/sm8750/audio/primary-hal hardware/qcom-caf/sm8750/data-ipa-cfg-mgr hardware/qcom-caf/sm8750/dataipa hardware/qcom-caf/sm8750/display/core hardware/qcom-caf/sm8750/display/hal hardware/qcom-caf/sm8750/display/intf hardware/qcom-caf/sm8850/audio/agm hardware/qcom-caf/sm8850/audio/graphservices hardware/qcom-caf/sm8850/audio/pal hardware/qcom-caf/sm8850/audio/primary-hal hardware/qcom-caf/sm8850/data-ipa-cfg-mgr hardware/qcom-caf/sm8850/dataipa hardware/qcom-caf/sm8850/display/core hardware/qcom-caf/sm8850/display/hal hardware/qcom-caf/sm8850/display/intf hardware/qcom-caf/thermal hardware/qcom-caf/thermal-legacy-um hardware/qcom-caf/wlan >> /tmp/probe/g-14.log 2>&1 && { ok=1; break; }
             grep -a -iE "error|fatal|fail" /tmp/probe/g-14.log | tail -n 5 || true
             sleep 15
           done
@@ -548,7 +548,7 @@ jobs:
           name: g-20-external-c
           path: /tmp/probe/g-20.log
 
-      - name: Sync [prebuilts-a] (38 projetos)
+      - name: Sync [prebuilts-a] (34 projetos)
         working-directory: /home/runner/evo
         timeout-minutes: 60
         run: |
@@ -557,7 +557,7 @@ jobs:
           ok=0
           for t in 1 2; do
             echo "== tentativa $t ==" | tee -a /tmp/probe/g-21.log
-            repo sync -c --no-tags --no-clone-bundle --optimized-fetch --prune -j4 prebuilts/abi-dumps/ndk prebuilts/abi-dumps/platform prebuilts/abi-dumps/vndk prebuilts/android-emulator prebuilts/asuite prebuilts/bazel/common prebuilts/build-tools prebuilts/bundletool prebuilts/checkcolor prebuilts/checkstyle prebuilts/cipd prebuilts/clang-tools prebuilts/clang/host/linux-x86 prebuilts/clang/kernel/linux-x86/clang-r416183b prebuilts/cmake/linux-x86 prebuilts/cmdline-tools prebuilts/devtools prebuilts/extract-tools prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 prebuilts/gcc/linux-x86/host/x86_64-w64-mingw32-4.8 prebuilts/go/linux-x86 prebuilts/gradle-plugin prebuilts/jdk/jdk21 prebuilts/jdk/jdk25 prebuilts/jdk/jdk8 prebuilts/kernel-build-tools prebuilts/ktlint prebuilts/manifest-merger prebuilts/maven_repo/bumptech prebuilts/misc prebuilts/module_sdk/AdServices prebuilts/module_sdk/AppSearch prebuilts/module_sdk/Bluetooth prebuilts/module_sdk/ConfigInfrastructure prebuilts/module_sdk/Connectivity prebuilts/module_sdk/CrashRecovery prebuilts/module_sdk/DeviceLock prebuilts/module_sdk/HealthFitness >> /tmp/probe/g-21.log 2>&1 && { ok=1; break; }
+            repo sync -c --no-tags --no-clone-bundle --optimized-fetch --prune -j4 prebuilts/abi-dumps/ndk prebuilts/abi-dumps/platform prebuilts/abi-dumps/vndk prebuilts/asuite prebuilts/bazel/common prebuilts/build-tools prebuilts/bundletool prebuilts/checkcolor prebuilts/checkstyle prebuilts/cipd prebuilts/clang-tools prebuilts/clang/host/linux-x86 prebuilts/cmake/linux-x86 prebuilts/cmdline-tools prebuilts/devtools prebuilts/extract-tools prebuilts/go/linux-x86 prebuilts/gradle-plugin prebuilts/jdk/jdk21 prebuilts/jdk/jdk25 prebuilts/kernel-build-tools prebuilts/ktlint prebuilts/manifest-merger prebuilts/maven_repo/bumptech prebuilts/misc prebuilts/r8 prebuilts/remoteexecution-client prebuilts/runtime prebuilts/rust prebuilts/rust-toolchain/linux-musl-x86 prebuilts/rust-toolchain/linux-x86 prebuilts/siso prebuilts/tools prebuilts/tools-lineage >> /tmp/probe/g-21.log 2>&1 && { ok=1; break; }
             grep -a -iE "error|fatal|fail" /tmp/probe/g-21.log | tail -n 5 || true
             sleep 15
           done
@@ -573,16 +573,16 @@ jobs:
           name: g-21-prebuilts-a
           path: /tmp/probe/g-21.log
 
-      - name: Sync [prebuilts-b1] (5 projetos)
+      - name: Sync [prebuilts-ndk] (0 projetos)
         working-directory: /home/runner/evo
         timeout-minutes: 60
         run: |
-          echo "=== grupo prebuilts-b1 ===" > /tmp/probe/g-22.log
+          echo "=== grupo prebuilts-ndk ===" > /tmp/probe/g-22.log
           df -h / >> /tmp/probe/g-22.log; free -h >> /tmp/probe/g-22.log
           ok=0
           for t in 1 2; do
             echo "== tentativa $t ==" | tee -a /tmp/probe/g-22.log
-            repo sync -c --no-tags --no-clone-bundle --optimized-fetch --prune -j4 prebuilts/module_sdk/IPsec prebuilts/module_sdk/Media prebuilts/module_sdk/MediaProvider prebuilts/module_sdk/Nfc prebuilts/module_sdk/NpuManager >> /tmp/probe/g-22.log 2>&1 && { ok=1; break; }
+            repo sync -c --no-tags --no-clone-bundle --optimized-fetch --prune -j4  >> /tmp/probe/g-22.log 2>&1 && { ok=1; break; }
             grep -a -iE "error|fatal|fail" /tmp/probe/g-22.log | tail -n 5 || true
             sleep 15
           done
@@ -591,23 +591,23 @@ jobs:
           cat /tmp/probe/g-22.log | tail -n 6
           [ "$ok" = "1" ]
 
-      - name: Upload grupo prebuilts-b1
+      - name: Upload grupo prebuilts-ndk
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: g-22-prebuilts-b1
+          name: g-22-prebuilts-ndk
           path: /tmp/probe/g-22.log
 
-      - name: Sync [prebuilts-b2] (5 projetos)
+      - name: Sync [build] (5 projetos)
         working-directory: /home/runner/evo
         timeout-minutes: 60
         run: |
-          echo "=== grupo prebuilts-b2 ===" > /tmp/probe/g-23.log
+          echo "=== grupo build ===" > /tmp/probe/g-23.log
           df -h / >> /tmp/probe/g-23.log; free -h >> /tmp/probe/g-23.log
           ok=0
           for t in 1 2; do
             echo "== tentativa $t ==" | tee -a /tmp/probe/g-23.log
-            repo sync -c --no-tags --no-clone-bundle --optimized-fetch --prune -j4 prebuilts/module_sdk/OnDevicePersonalization prebuilts/module_sdk/Permission prebuilts/module_sdk/Profiling prebuilts/module_sdk/RemoteKeyProvisioning prebuilts/module_sdk/Scheduling >> /tmp/probe/g-23.log 2>&1 && { ok=1; break; }
+            repo sync -c --no-tags --no-clone-bundle --optimized-fetch --prune -j4 build/blueprint build/pesto build/release build/make build/soong >> /tmp/probe/g-23.log 2>&1 && { ok=1; break; }
             grep -a -iE "error|fatal|fail" /tmp/probe/g-23.log | tail -n 5 || true
             sleep 15
           done
@@ -616,23 +616,23 @@ jobs:
           cat /tmp/probe/g-23.log | tail -n 6
           [ "$ok" = "1" ]
 
-      - name: Upload grupo prebuilts-b2
+      - name: Upload grupo build
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: g-23-prebuilts-b2
+          name: g-23-build
           path: /tmp/probe/g-23.log
 
-      - name: Sync [prebuilts-b3] (5 projetos)
+      - name: Sync [evolution] (3 projetos)
         working-directory: /home/runner/evo
         timeout-minutes: 60
         run: |
-          echo "=== grupo prebuilts-b3 ===" > /tmp/probe/g-24.log
+          echo "=== grupo evolution ===" > /tmp/probe/g-24.log
           df -h / >> /tmp/probe/g-24.log; free -h >> /tmp/probe/g-24.log
           ok=0
           for t in 1 2; do
             echo "== tentativa $t ==" | tee -a /tmp/probe/g-24.log
-            repo sync -c --no-tags --no-clone-bundle --optimized-fetch --prune -j4 prebuilts/module_sdk/SdkExtensions prebuilts/module_sdk/StatsD prebuilts/module_sdk/Telephony prebuilts/module_sdk/UprobeStats prebuilts/module_sdk/Uwb >> /tmp/probe/g-24.log 2>&1 && { ok=1; break; }
+            repo sync -c --no-tags --no-clone-bundle --optimized-fetch --prune -j4 evolution/manifest evolution/OTA evolution/OTA-VANILLA >> /tmp/probe/g-24.log 2>&1 && { ok=1; break; }
             grep -a -iE "error|fatal|fail" /tmp/probe/g-24.log | tail -n 5 || true
             sleep 15
           done
@@ -641,23 +641,23 @@ jobs:
           cat /tmp/probe/g-24.log | tail -n 6
           [ "$ok" = "1" ]
 
-      - name: Upload grupo prebuilts-b3
+      - name: Upload grupo evolution
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: g-24-prebuilts-b3
+          name: g-24-evolution
           path: /tmp/probe/g-24.log
 
-      - name: Sync [prebuilts-b4] (5 projetos)
+      - name: Sync [kernel] (1 projetos)
         working-directory: /home/runner/evo
         timeout-minutes: 60
         run: |
-          echo "=== grupo prebuilts-b4 ===" > /tmp/probe/g-25.log
+          echo "=== grupo kernel ===" > /tmp/probe/g-25.log
           df -h / >> /tmp/probe/g-25.log; free -h >> /tmp/probe/g-25.log
           ok=0
           for t in 1 2; do
             echo "== tentativa $t ==" | tee -a /tmp/probe/g-25.log
-            repo sync -c --no-tags --no-clone-bundle --optimized-fetch --prune -j4 prebuilts/module_sdk/WebApp prebuilts/module_sdk/WebViewBootstrap prebuilts/module_sdk/Wifi prebuilts/module_sdk/art prebuilts/module_sdk/conscrypt >> /tmp/probe/g-25.log 2>&1 && { ok=1; break; }
+            repo sync -c --no-tags --no-clone-bundle --optimized-fetch --prune -j4 kernel/configs >> /tmp/probe/g-25.log 2>&1 && { ok=1; break; }
             grep -a -iE "error|fatal|fail" /tmp/probe/g-25.log | tail -n 5 || true
             sleep 15
           done
@@ -666,23 +666,23 @@ jobs:
           cat /tmp/probe/g-25.log | tail -n 6
           [ "$ok" = "1" ]
 
-      - name: Upload grupo prebuilts-b4
+      - name: Upload grupo kernel
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: g-25-prebuilts-b4
+          name: g-25-kernel
           path: /tmp/probe/g-25.log
 
-      - name: Sync [prebuilts-b5] (5 projetos)
+      - name: Sync [libcore] (1 projetos)
         working-directory: /home/runner/evo
         timeout-minutes: 60
         run: |
-          echo "=== grupo prebuilts-b5 ===" > /tmp/probe/g-26.log
+          echo "=== grupo libcore ===" > /tmp/probe/g-26.log
           df -h / >> /tmp/probe/g-26.log; free -h >> /tmp/probe/g-26.log
           ok=0
           for t in 1 2; do
             echo "== tentativa $t ==" | tee -a /tmp/probe/g-26.log
-            repo sync -c --no-tags --no-clone-bundle --optimized-fetch --prune -j4 prebuilts/qemu-kernel prebuilts/r8 prebuilts/remoteexecution-client prebuilts/runtime prebuilts/rust >> /tmp/probe/g-26.log 2>&1 && { ok=1; break; }
+            repo sync -c --no-tags --no-clone-bundle --optimized-fetch --prune -j4 libcore >> /tmp/probe/g-26.log 2>&1 && { ok=1; break; }
             grep -a -iE "error|fatal|fail" /tmp/probe/g-26.log | tail -n 5 || true
             sleep 15
           done
@@ -691,23 +691,23 @@ jobs:
           cat /tmp/probe/g-26.log | tail -n 6
           [ "$ok" = "1" ]
 
-      - name: Upload grupo prebuilts-b5
+      - name: Upload grupo libcore
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: g-26-prebuilts-b5
+          name: g-26-libcore
           path: /tmp/probe/g-26.log
 
-      - name: Sync [prebuilts-b6x1] (1 projetos)
+      - name: Sync [libnativehelper] (1 projetos)
         working-directory: /home/runner/evo
         timeout-minutes: 60
         run: |
-          echo "=== grupo prebuilts-b6x1 ===" > /tmp/probe/g-27.log
+          echo "=== grupo libnativehelper ===" > /tmp/probe/g-27.log
           df -h / >> /tmp/probe/g-27.log; free -h >> /tmp/probe/g-27.log
           ok=0
           for t in 1 2; do
             echo "== tentativa $t ==" | tee -a /tmp/probe/g-27.log
-            repo sync -c --no-tags --no-clone-bundle --optimized-fetch --prune -j4 prebuilts/rust-toolchain/linux-musl-x86 >> /tmp/probe/g-27.log 2>&1 && { ok=1; break; }
+            repo sync -c --no-tags --no-clone-bundle --optimized-fetch --prune -j4 libnativehelper >> /tmp/probe/g-27.log 2>&1 && { ok=1; break; }
             grep -a -iE "error|fatal|fail" /tmp/probe/g-27.log | tail -n 5 || true
             sleep 15
           done
@@ -716,23 +716,23 @@ jobs:
           cat /tmp/probe/g-27.log | tail -n 6
           [ "$ok" = "1" ]
 
-      - name: Upload grupo prebuilts-b6x1
+      - name: Upload grupo libnativehelper
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: g-27-prebuilts-b6x1
+          name: g-27-libnativehelper
           path: /tmp/probe/g-27.log
 
-      - name: Sync [prebuilts-b6x2] (1 projetos)
+      - name: Sync [lineage] (1 projetos)
         working-directory: /home/runner/evo
         timeout-minutes: 60
         run: |
-          echo "=== grupo prebuilts-b6x2 ===" > /tmp/probe/g-28.log
+          echo "=== grupo lineage ===" > /tmp/probe/g-28.log
           df -h / >> /tmp/probe/g-28.log; free -h >> /tmp/probe/g-28.log
           ok=0
           for t in 1 2; do
             echo "== tentativa $t ==" | tee -a /tmp/probe/g-28.log
-            repo sync -c --no-tags --no-clone-bundle --optimized-fetch --prune -j4 prebuilts/rust-toolchain/linux-x86 >> /tmp/probe/g-28.log 2>&1 && { ok=1; break; }
+            repo sync -c --no-tags --no-clone-bundle --optimized-fetch --prune -j4 lineage/scripts >> /tmp/probe/g-28.log 2>&1 && { ok=1; break; }
             grep -a -iE "error|fatal|fail" /tmp/probe/g-28.log | tail -n 5 || true
             sleep 15
           done
@@ -741,23 +741,23 @@ jobs:
           cat /tmp/probe/g-28.log | tail -n 6
           [ "$ok" = "1" ]
 
-      - name: Upload grupo prebuilts-b6x2
+      - name: Upload grupo lineage
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: g-28-prebuilts-b6x2
+          name: g-28-lineage
           path: /tmp/probe/g-28.log
 
-      - name: Sync [prebuilts-b6x3] (1 projetos)
+      - name: Sync [lineage-sdk] (1 projetos)
         working-directory: /home/runner/evo
         timeout-minutes: 60
         run: |
-          echo "=== grupo prebuilts-b6x3 ===" > /tmp/probe/g-29.log
+          echo "=== grupo lineage-sdk ===" > /tmp/probe/g-29.log
           df -h / >> /tmp/probe/g-29.log; free -h >> /tmp/probe/g-29.log
           ok=0
           for t in 1 2; do
             echo "== tentativa $t ==" | tee -a /tmp/probe/g-29.log
-            repo sync -c --no-tags --no-clone-bundle --optimized-fetch --prune -j4 prebuilts/sdk >> /tmp/probe/g-29.log 2>&1 && { ok=1; break; }
+            repo sync -c --no-tags --no-clone-bundle --optimized-fetch --prune -j4 lineage-sdk >> /tmp/probe/g-29.log 2>&1 && { ok=1; break; }
             grep -a -iE "error|fatal|fail" /tmp/probe/g-29.log | tail -n 5 || true
             sleep 15
           done
@@ -766,23 +766,23 @@ jobs:
           cat /tmp/probe/g-29.log | tail -n 6
           [ "$ok" = "1" ]
 
-      - name: Upload grupo prebuilts-b6x3
+      - name: Upload grupo lineage-sdk
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: g-29-prebuilts-b6x3
+          name: g-29-lineage-sdk
           path: /tmp/probe/g-29.log
 
-      - name: Sync [prebuilts-b6x4] (1 projetos)
+      - name: Sync [platform_testing] (1 projetos)
         working-directory: /home/runner/evo
         timeout-minutes: 60
         run: |
-          echo "=== grupo prebuilts-b6x4 ===" > /tmp/probe/g-30.log
+          echo "=== grupo platform_testing ===" > /tmp/probe/g-30.log
           df -h / >> /tmp/probe/g-30.log; free -h >> /tmp/probe/g-30.log
           ok=0
           for t in 1 2; do
             echo "== tentativa $t ==" | tee -a /tmp/probe/g-30.log
-            repo sync -c --no-tags --no-clone-bundle --optimized-fetch --prune -j4 prebuilts/siso >> /tmp/probe/g-30.log 2>&1 && { ok=1; break; }
+            repo sync -c --no-tags --no-clone-bundle --optimized-fetch --prune -j4 platform_testing >> /tmp/probe/g-30.log 2>&1 && { ok=1; break; }
             grep -a -iE "error|fatal|fail" /tmp/probe/g-30.log | tail -n 5 || true
             sleep 15
           done
@@ -791,287 +791,12 @@ jobs:
           cat /tmp/probe/g-30.log | tail -n 6
           [ "$ok" = "1" ]
 
-      - name: Upload grupo prebuilts-b6x4
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: g-30-prebuilts-b6x4
-          path: /tmp/probe/g-30.log
-
-      - name: Sync [prebuilts-b6x5] (1 projetos)
-        working-directory: /home/runner/evo
-        timeout-minutes: 60
-        run: |
-          echo "=== grupo prebuilts-b6x5 ===" > /tmp/probe/g-31.log
-          df -h / >> /tmp/probe/g-31.log; free -h >> /tmp/probe/g-31.log
-          ok=0
-          for t in 1 2; do
-            echo "== tentativa $t ==" | tee -a /tmp/probe/g-31.log
-            repo sync -c --no-tags --no-clone-bundle --optimized-fetch --prune -j4 prebuilts/tools >> /tmp/probe/g-31.log 2>&1 && { ok=1; break; }
-            grep -a -iE "error|fatal|fail" /tmp/probe/g-31.log | tail -n 5 || true
-            sleep 15
-          done
-          echo "sync_ok=$ok" | tee -a /tmp/probe/g-31.log
-          df -h / >> /tmp/probe/g-31.log; free -h >> /tmp/probe/g-31.log; du -sh .repo >> /tmp/probe/g-31.log || true
-          cat /tmp/probe/g-31.log | tail -n 6
-          [ "$ok" = "1" ]
-
-      - name: Upload grupo prebuilts-b6x5
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: g-31-prebuilts-b6x5
-          path: /tmp/probe/g-31.log
-
-      - name: Sync [prebuilts-b7] (5 projetos)
-        working-directory: /home/runner/evo
-        timeout-minutes: 60
-        run: |
-          echo "=== grupo prebuilts-b7 ===" > /tmp/probe/g-32.log
-          df -h / >> /tmp/probe/g-32.log; free -h >> /tmp/probe/g-32.log
-          ok=0
-          for t in 1 2; do
-            echo "== tentativa $t ==" | tee -a /tmp/probe/g-32.log
-            repo sync -c --no-tags --no-clone-bundle --optimized-fetch --prune -j4 prebuilts/tools-lineage prebuilts/vndk/v31 prebuilts/vndk/v32 prebuilts/vndk/v33 prebuilts/vndk/v34 >> /tmp/probe/g-32.log 2>&1 && { ok=1; break; }
-            grep -a -iE "error|fatal|fail" /tmp/probe/g-32.log | tail -n 5 || true
-            sleep 15
-          done
-          echo "sync_ok=$ok" | tee -a /tmp/probe/g-32.log
-          df -h / >> /tmp/probe/g-32.log; free -h >> /tmp/probe/g-32.log; du -sh .repo >> /tmp/probe/g-32.log || true
-          cat /tmp/probe/g-32.log | tail -n 6
-          [ "$ok" = "1" ]
-
-      - name: Upload grupo prebuilts-b7
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: g-32-prebuilts-b7
-          path: /tmp/probe/g-32.log
-
-      - name: Sync [prebuilts-ndk] (1 projetos)
-        working-directory: /home/runner/evo
-        timeout-minutes: 60
-        run: |
-          echo "=== grupo prebuilts-ndk ===" > /tmp/probe/g-33.log
-          df -h / >> /tmp/probe/g-33.log; free -h >> /tmp/probe/g-33.log
-          ok=0
-          for t in 1 2; do
-            echo "== tentativa $t ==" | tee -a /tmp/probe/g-33.log
-            repo sync -c --no-tags --no-clone-bundle --optimized-fetch --prune -j4 prebuilts/ndk >> /tmp/probe/g-33.log 2>&1 && { ok=1; break; }
-            grep -a -iE "error|fatal|fail" /tmp/probe/g-33.log | tail -n 5 || true
-            sleep 15
-          done
-          echo "sync_ok=$ok" | tee -a /tmp/probe/g-33.log
-          df -h / >> /tmp/probe/g-33.log; free -h >> /tmp/probe/g-33.log; du -sh .repo >> /tmp/probe/g-33.log || true
-          cat /tmp/probe/g-33.log | tail -n 6
-          [ "$ok" = "1" ]
-
-      - name: Upload grupo prebuilts-ndk
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: g-33-prebuilts-ndk
-          path: /tmp/probe/g-33.log
-
-      - name: Sync [build] (5 projetos)
-        working-directory: /home/runner/evo
-        timeout-minutes: 60
-        run: |
-          echo "=== grupo build ===" > /tmp/probe/g-34.log
-          df -h / >> /tmp/probe/g-34.log; free -h >> /tmp/probe/g-34.log
-          ok=0
-          for t in 1 2; do
-            echo "== tentativa $t ==" | tee -a /tmp/probe/g-34.log
-            repo sync -c --no-tags --no-clone-bundle --optimized-fetch --prune -j4 build/blueprint build/pesto build/release build/make build/soong >> /tmp/probe/g-34.log 2>&1 && { ok=1; break; }
-            grep -a -iE "error|fatal|fail" /tmp/probe/g-34.log | tail -n 5 || true
-            sleep 15
-          done
-          echo "sync_ok=$ok" | tee -a /tmp/probe/g-34.log
-          df -h / >> /tmp/probe/g-34.log; free -h >> /tmp/probe/g-34.log; du -sh .repo >> /tmp/probe/g-34.log || true
-          cat /tmp/probe/g-34.log | tail -n 6
-          [ "$ok" = "1" ]
-
-      - name: Upload grupo build
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: g-34-build
-          path: /tmp/probe/g-34.log
-
-      - name: Sync [evolution] (3 projetos)
-        working-directory: /home/runner/evo
-        timeout-minutes: 60
-        run: |
-          echo "=== grupo evolution ===" > /tmp/probe/g-35.log
-          df -h / >> /tmp/probe/g-35.log; free -h >> /tmp/probe/g-35.log
-          ok=0
-          for t in 1 2; do
-            echo "== tentativa $t ==" | tee -a /tmp/probe/g-35.log
-            repo sync -c --no-tags --no-clone-bundle --optimized-fetch --prune -j4 evolution/manifest evolution/OTA evolution/OTA-VANILLA >> /tmp/probe/g-35.log 2>&1 && { ok=1; break; }
-            grep -a -iE "error|fatal|fail" /tmp/probe/g-35.log | tail -n 5 || true
-            sleep 15
-          done
-          echo "sync_ok=$ok" | tee -a /tmp/probe/g-35.log
-          df -h / >> /tmp/probe/g-35.log; free -h >> /tmp/probe/g-35.log; du -sh .repo >> /tmp/probe/g-35.log || true
-          cat /tmp/probe/g-35.log | tail -n 6
-          [ "$ok" = "1" ]
-
-      - name: Upload grupo evolution
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: g-35-evolution
-          path: /tmp/probe/g-35.log
-
-      - name: Sync [kernel] (1 projetos)
-        working-directory: /home/runner/evo
-        timeout-minutes: 60
-        run: |
-          echo "=== grupo kernel ===" > /tmp/probe/g-36.log
-          df -h / >> /tmp/probe/g-36.log; free -h >> /tmp/probe/g-36.log
-          ok=0
-          for t in 1 2; do
-            echo "== tentativa $t ==" | tee -a /tmp/probe/g-36.log
-            repo sync -c --no-tags --no-clone-bundle --optimized-fetch --prune -j4 kernel/configs >> /tmp/probe/g-36.log 2>&1 && { ok=1; break; }
-            grep -a -iE "error|fatal|fail" /tmp/probe/g-36.log | tail -n 5 || true
-            sleep 15
-          done
-          echo "sync_ok=$ok" | tee -a /tmp/probe/g-36.log
-          df -h / >> /tmp/probe/g-36.log; free -h >> /tmp/probe/g-36.log; du -sh .repo >> /tmp/probe/g-36.log || true
-          cat /tmp/probe/g-36.log | tail -n 6
-          [ "$ok" = "1" ]
-
-      - name: Upload grupo kernel
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: g-36-kernel
-          path: /tmp/probe/g-36.log
-
-      - name: Sync [libcore] (1 projetos)
-        working-directory: /home/runner/evo
-        timeout-minutes: 60
-        run: |
-          echo "=== grupo libcore ===" > /tmp/probe/g-37.log
-          df -h / >> /tmp/probe/g-37.log; free -h >> /tmp/probe/g-37.log
-          ok=0
-          for t in 1 2; do
-            echo "== tentativa $t ==" | tee -a /tmp/probe/g-37.log
-            repo sync -c --no-tags --no-clone-bundle --optimized-fetch --prune -j4 libcore >> /tmp/probe/g-37.log 2>&1 && { ok=1; break; }
-            grep -a -iE "error|fatal|fail" /tmp/probe/g-37.log | tail -n 5 || true
-            sleep 15
-          done
-          echo "sync_ok=$ok" | tee -a /tmp/probe/g-37.log
-          df -h / >> /tmp/probe/g-37.log; free -h >> /tmp/probe/g-37.log; du -sh .repo >> /tmp/probe/g-37.log || true
-          cat /tmp/probe/g-37.log | tail -n 6
-          [ "$ok" = "1" ]
-
-      - name: Upload grupo libcore
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: g-37-libcore
-          path: /tmp/probe/g-37.log
-
-      - name: Sync [libnativehelper] (1 projetos)
-        working-directory: /home/runner/evo
-        timeout-minutes: 60
-        run: |
-          echo "=== grupo libnativehelper ===" > /tmp/probe/g-38.log
-          df -h / >> /tmp/probe/g-38.log; free -h >> /tmp/probe/g-38.log
-          ok=0
-          for t in 1 2; do
-            echo "== tentativa $t ==" | tee -a /tmp/probe/g-38.log
-            repo sync -c --no-tags --no-clone-bundle --optimized-fetch --prune -j4 libnativehelper >> /tmp/probe/g-38.log 2>&1 && { ok=1; break; }
-            grep -a -iE "error|fatal|fail" /tmp/probe/g-38.log | tail -n 5 || true
-            sleep 15
-          done
-          echo "sync_ok=$ok" | tee -a /tmp/probe/g-38.log
-          df -h / >> /tmp/probe/g-38.log; free -h >> /tmp/probe/g-38.log; du -sh .repo >> /tmp/probe/g-38.log || true
-          cat /tmp/probe/g-38.log | tail -n 6
-          [ "$ok" = "1" ]
-
-      - name: Upload grupo libnativehelper
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: g-38-libnativehelper
-          path: /tmp/probe/g-38.log
-
-      - name: Sync [lineage] (1 projetos)
-        working-directory: /home/runner/evo
-        timeout-minutes: 60
-        run: |
-          echo "=== grupo lineage ===" > /tmp/probe/g-39.log
-          df -h / >> /tmp/probe/g-39.log; free -h >> /tmp/probe/g-39.log
-          ok=0
-          for t in 1 2; do
-            echo "== tentativa $t ==" | tee -a /tmp/probe/g-39.log
-            repo sync -c --no-tags --no-clone-bundle --optimized-fetch --prune -j4 lineage/scripts >> /tmp/probe/g-39.log 2>&1 && { ok=1; break; }
-            grep -a -iE "error|fatal|fail" /tmp/probe/g-39.log | tail -n 5 || true
-            sleep 15
-          done
-          echo "sync_ok=$ok" | tee -a /tmp/probe/g-39.log
-          df -h / >> /tmp/probe/g-39.log; free -h >> /tmp/probe/g-39.log; du -sh .repo >> /tmp/probe/g-39.log || true
-          cat /tmp/probe/g-39.log | tail -n 6
-          [ "$ok" = "1" ]
-
-      - name: Upload grupo lineage
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: g-39-lineage
-          path: /tmp/probe/g-39.log
-
-      - name: Sync [lineage-sdk] (1 projetos)
-        working-directory: /home/runner/evo
-        timeout-minutes: 60
-        run: |
-          echo "=== grupo lineage-sdk ===" > /tmp/probe/g-40.log
-          df -h / >> /tmp/probe/g-40.log; free -h >> /tmp/probe/g-40.log
-          ok=0
-          for t in 1 2; do
-            echo "== tentativa $t ==" | tee -a /tmp/probe/g-40.log
-            repo sync -c --no-tags --no-clone-bundle --optimized-fetch --prune -j4 lineage-sdk >> /tmp/probe/g-40.log 2>&1 && { ok=1; break; }
-            grep -a -iE "error|fatal|fail" /tmp/probe/g-40.log | tail -n 5 || true
-            sleep 15
-          done
-          echo "sync_ok=$ok" | tee -a /tmp/probe/g-40.log
-          df -h / >> /tmp/probe/g-40.log; free -h >> /tmp/probe/g-40.log; du -sh .repo >> /tmp/probe/g-40.log || true
-          cat /tmp/probe/g-40.log | tail -n 6
-          [ "$ok" = "1" ]
-
-      - name: Upload grupo lineage-sdk
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: g-40-lineage-sdk
-          path: /tmp/probe/g-40.log
-
-      - name: Sync [platform_testing] (1 projetos)
-        working-directory: /home/runner/evo
-        timeout-minutes: 60
-        run: |
-          echo "=== grupo platform_testing ===" > /tmp/probe/g-41.log
-          df -h / >> /tmp/probe/g-41.log; free -h >> /tmp/probe/g-41.log
-          ok=0
-          for t in 1 2; do
-            echo "== tentativa $t ==" | tee -a /tmp/probe/g-41.log
-            repo sync -c --no-tags --no-clone-bundle --optimized-fetch --prune -j4 platform_testing >> /tmp/probe/g-41.log 2>&1 && { ok=1; break; }
-            grep -a -iE "error|fatal|fail" /tmp/probe/g-41.log | tail -n 5 || true
-            sleep 15
-          done
-          echo "sync_ok=$ok" | tee -a /tmp/probe/g-41.log
-          df -h / >> /tmp/probe/g-41.log; free -h >> /tmp/probe/g-41.log; du -sh .repo >> /tmp/probe/g-41.log || true
-          cat /tmp/probe/g-41.log | tail -n 6
-          [ "$ok" = "1" ]
-
       - name: Upload grupo platform_testing
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: g-41-platform_testing
-          path: /tmp/probe/g-41.log
+          name: g-30-platform_testing
+          path: /tmp/probe/g-30.log
 
       - name: Vigia final de disco
         working-directory: /home/runner/evo
