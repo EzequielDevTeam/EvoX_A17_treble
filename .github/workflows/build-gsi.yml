@@ -784,6 +784,14 @@ jobs:
       - name: Validar trio + lunch
         working-directory: /home/runner/evo
         run: |
-          ls device/phh/treble/evox_gsi.mk vendor/hardware_overlay/overlay.mk treble_app/TrebleApp.apk
-          source build/envsetup.sh
-          lunch evox_gsi-userdebug
+          ls device/phh/treble/evox_gsi.mk vendor/hardware_overlay/overlay.mk treble_app/TrebleApp.apk | tee /tmp/probe/lunch.log
+          source build/envsetup.sh >> /tmp/probe/lunch.log 2>&1
+          lunch evox_gsi-userdebug >> /tmp/probe/lunch.log 2>&1
+          tail -n 25 /tmp/probe/lunch.log
+
+      - name: Upload log do lunch
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lunch-log
+          path: /tmp/probe/lunch.log
