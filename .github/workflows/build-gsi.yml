@@ -39,7 +39,7 @@ jobs:
         working-directory: /home/runner/evo
         timeout-minutes: 330
         run: |
-          repo sync -c --no-tags --no-clone-bundle -j2 2>&1 | tail -n 30
+          repo sync -c --no-tags --no-clone-bundle -j2 2>&1 | tee /tmp/probe/sync.log | tail -n 30
 
       - name: Garantir vendor/lineage/build/envsetup.sh existe
         working-directory: /home/runner/evo
@@ -60,5 +60,15 @@ jobs:
         working-directory: /home/runner/evo
         run: |
           ls device/phh/treble/evox_gsi.mk vendor/hardware_overlay/overlay.mk treble_app/TrebleApp.apk
-          source build/envsetup.sh
-          lunch evox_gsi-userdebug
+          source build/envsetup.sh 2>&1 | tee /tmp/probe/envsetup.log
+          lunch evox_gsi-userdebug 2>&1 | tee /tmp/probe/lunch.log
+
+      - name: Upload logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lunch-logs
+          path: |
+            /tmp/probe/envsetup.log
+            /tmp/probe/lunch.log
+            /tmp/probe/sync.log
