@@ -41,12 +41,14 @@ jobs:
         run: |
           repo sync -c --no-tags --no-clone-bundle -j2 2>&1 | tee /tmp/probe/sync.log | tail -n 30
 
-      - name: Garantir vendor/lineage/build/envsetup.sh existe
+      - name: Criar stub vendor/lineage/build/envsetup.sh
         working-directory: /home/runner/evo
         run: |
           mkdir -p vendor/lineage/build
-          echo '# stub envsetup (vendor/lineage pode nao ter build/envsetup.sh)' > vendor/lineage/build/envsetup.sh
+          echo '# stub envsetup' > vendor/lineage/build/envsetup.sh
+          echo "Arquivo criado:"
           ls -la vendor/lineage/build/envsetup.sh
+          cat vendor/lineage/build/envsetup.sh
 
       - name: Vigia disco final
         working-directory: /home/runner/evo
@@ -59,9 +61,17 @@ jobs:
       - name: lunch evox_gsi-userdebug
         working-directory: /home/runner/evo
         run: |
-          ls device/phh/treble/evox_gsi.mk vendor/hardware_overlay/overlay.mk treble_app/TrebleApp.apk
-          source build/envsetup.sh 2>&1 | tee /tmp/probe/envsetup.log
-          lunch evox_gsi-userdebug 2>&1 | tee /tmp/probe/lunch.log
+          echo "=== PWD ==="
+          pwd
+          echo "=== Verificando stub ==="
+          ls -la vendor/lineage/build/envsetup.sh
+          cat vendor/lineage/build/envsetup.sh
+          echo "=== Verificando arquivos chave ==="
+          ls -la device/phh/treble/evox_gsi.mk vendor/hardware_overlay/overlay.mk treble_app/TrebleApp.apk
+          echo "=== Source build/envsetup.sh ==="
+          source build/envsetup.sh
+          echo "=== Lunch ==="
+          lunch evox_gsi-userdebug
 
       - name: Upload logs
         if: always()
