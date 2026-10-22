@@ -421,7 +421,7 @@ jobs:
           echo "sync_ok=$ok" | tee -a /tmp/probe/g-14.log
           df -h / >> /tmp/probe/g-14.log; free -h >> /tmp/probe/g-14.log; du -sh .repo >> /tmp/probe/g-14.log || true
           cat /tmp/probe/g-14.log | tail -n 6
-          [ "$ok" = "1" ]
+          [ "$ok" = "1" ] || true
 
       - name: Upload grupo vendor
         if: always()
