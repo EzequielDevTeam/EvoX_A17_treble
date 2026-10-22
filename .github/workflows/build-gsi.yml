@@ -50,6 +50,22 @@ jobs:
         run: |
           repo init -u https://github.com/EzequielDevTeam/EvoX_A17_treble -b main -m EvoX_A17.xml --depth=1 --git-lfs
 
+      - name: Baixar EvoX_A17.xml direto do GitHub (sem vendor_gms)
+        working-directory: /home/runner/evo
+        run: |
+          curl -sL https://raw.githubusercontent.com/EzequielDevTeam/EvoX_A17_treble/main/EvoX_A17.xml -o .repo/manifest.xml
+          echo "manifest local atualizado (sem vendor_gms)"
+          grep -c vendor_gms .repo/manifest.xml && echo "AVISO: vendor_gms ainda presente!" || echo "OK: vendor_gms ausente"
+
+      - name: Criar stub vendor/gms/gms_pico.mk
+        working-directory: /home/runner/evo
+        run: |
+          mkdir -p vendor/gms
+          if [ ! -f vendor/gms/gms_pico.mk ]; then
+            echo '# gms_pico stub (vendor_gms nao sincroniza)' > vendor/gms/gms_pico.mk
+          fi
+          ls -la vendor/gms/
+
       - name: Sync [treble_app] (1 projetos)
         working-directory: /home/runner/evo
         timeout-minutes: 60
