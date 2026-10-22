@@ -37,12 +37,13 @@ jobs:
       - name: Instalar repo + deps
         run: |
           sudo apt-get update -qq
-          sudo apt-get install -y -qq bc bison flex libssl-dev git-lfs 2>&1 | tail -n 2
+          sudo apt-get install -y -qq bc bison flex libssl-dev git-lfs ccache 2>&1 | tail -n 2
           mkdir -p ~/bin ~/evo
           curl -sL https://storage.googleapis.com/git-repo-downloads/repo -o ~/bin/repo
           chmod +x ~/bin/repo
           echo "$HOME/bin" >> $GITHUB_PATH
-
+          echo "USE_CCACHE=1" >> $GITHUB_ENV
+          echo "CCACHE_DIR=$GITHUB_WORKSPACE/.ccache" >> $GITHUB_ENV
       - name: Repo init (EvoX cnb + trio Doze-off)
         working-directory: /home/runner/evo
         run: |
