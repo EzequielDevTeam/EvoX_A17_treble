@@ -569,9 +569,6 @@ jobs:
           name: g-20-prebuilts-a
           path: /tmp/probe/g-20.log
 
-      - name: Sync [prebuilts-ndk] (0 projetos)
-        working-directory: /home/runner/evo
-        timeout-minutes: 60
         run: |
           echo "=== grupo prebuilts-ndk ===" > /tmp/probe/g-21.log
           df -h / >> /tmp/probe/g-21.log; free -h >> /tmp/probe/g-21.log
