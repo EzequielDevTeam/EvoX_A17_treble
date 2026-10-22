@@ -1069,10 +1069,6 @@
   <project path="treble_app" name="treble_app-doze" remote="doze" revision="master" clone-depth="1" />
 
   <remove-project name="platform/prebuilts/sdk" />
-  <remove-project name="platform/prebuilts/vndk/v31" />
-  <remove-project name="platform/prebuilts/vndk/v32" />
-  <remove-project name="platform/prebuilts/vndk/v33" />
-  <remove-project name="platform/prebuilts/vndk/v34" />
   <remove-project name="platform/prebuilts/ndk" />
   <remove-project name="platform/prebuilts/android-emulator" />
   <remove-project name="platform/prebuilts/qemu-kernel" />
@@ -1137,6 +1133,8 @@
   <remove-project name="platform/external/rust/cxx" />
   <remove-project name="platform/external/rust/pica" />
   <remove-project name="platform/external/rust/rutabaga_gfx" />
+  <!-- vendor_gms: checkout quebrado no servidor AOSP (Cannot initialize work tree). Removido do sync; gms_pico.mk stub criado apos o sync. -->
+  <remove-project name="vendor_gms" />
   <!-- ===== Dieta A17: fora da GSI (re-adicionar sob erro visivel) ===== -->
   <remove-project name="LineageOS/android_device_google_atv" />
   <remove-project name="device/google/contexthub" />
