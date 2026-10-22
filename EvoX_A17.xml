@@ -1068,8 +1068,6 @@
   <project path="vendor/hardware_overlay" name="vendor_hardware_overlay" remote="doze" revision="pie" clone-depth="1" />
   <project path="treble_app" name="treble_app-doze" remote="doze" revision="master" clone-depth="1" />
 
-  <!-- vendor_gms: checkout deterministico quebrado (Cannot initialize work tree). Re-adicionar depois do lunch. -->
-  <remove-project name="vendor_gms" />
   <remove-project name="platform/prebuilts/sdk" />
   <remove-project name="platform/prebuilts/vndk/v31" />
   <remove-project name="platform/prebuilts/vndk/v32" />
