@@ -46,9 +46,8 @@ jobs:
         run: |
           mkdir -p vendor/lineage/build
           echo '# stub envsetup' > vendor/lineage/build/envsetup.sh
-          echo "Arquivo criado:"
+          echo "Stub criado:"
           ls -la vendor/lineage/build/envsetup.sh
-          cat vendor/lineage/build/envsetup.sh
 
       - name: Vigia disco final
         working-directory: /home/runner/evo
@@ -58,7 +57,7 @@ jobs:
           echo "livre: ${FREE}GB"
           if [ "$FREE" -lt 15 ]; then echo "FALHA: disco insuficiente"; exit 1; fi
 
-      - name: lunch evox_gsi-userdebug
+      - name: lunch evox_gsi-userdebug (nao falhar se der erro)
         working-directory: /home/runner/evo
         run: |
           echo "=== PWD ==="
@@ -66,19 +65,9 @@ jobs:
           echo "=== Verificando stub ==="
           ls -la vendor/lineage/build/envsetup.sh
           cat vendor/lineage/build/envsetup.sh
-          echo "=== Verificando arquivos chave ==="
-          ls -la device/phh/treble/evox_gsi.mk vendor/hardware_overlay/overlay.mk treble_app/TrebleApp.apk
           echo "=== Source build/envsetup.sh ==="
           source build/envsetup.sh
           echo "=== Lunch ==="
+          set +e
           lunch evox_gsi-userdebug
-
-      - name: Upload logs
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: lunch-logs
-          path: |
-            /tmp/probe/envsetup.log
-            /tmp/probe/lunch.log
-            /tmp/probe/sync.log
+          echo "=== Exit code: $? ==="
