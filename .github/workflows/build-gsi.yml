@@ -4,8 +4,9 @@ on:
   workflow_dispatch:
 
 jobs:
-  sync:
+  build:
     runs-on: ubuntu-22.04
+    timeout-minutes: 330
     steps:
       - name: Limpeza de disco
         run: |
@@ -35,19 +36,17 @@ jobs:
           curl -sL https://raw.githubusercontent.com/EzequielDevTeam/EvoX_A17_treble/main/EvoX_A17.xml -o .repo/manifest.xml
           grep -c vendor_gms .repo/manifest.xml && echo "AVISO: vendor_gms ainda presente" || echo "OK: vendor_gms ausente"
 
-      - name: Sync completo (pode demorar ~30min)
-        working-directory: /home/runner/evo
-        timeout-minutes: 330
-        run: |
-          repo sync -c --no-tags --no-clone-bundle -j2 2>&1 | tee /tmp/probe/sync.log | tail -n 30
-
       - name: Criar stub vendor/lineage/build/envsetup.sh
         working-directory: /home/runner/evo
         run: |
           mkdir -p vendor/lineage/build
-          echo '# stub envsetup' > vendor/lineage/build/envsetup.sh
-          echo "Stub criado:"
-          ls -la vendor/lineage/build/envsetup.sh
+          echo '# stub envsetup (vendor/lineage pode nao ter build/envsetup.sh)' > vendor/lineage/build/envsetup.sh
+
+      - name: Sync completo (pode demorar ~30min)
+        working-directory: /home/runner/evo
+        timeout-minutes: 300
+        run: |
+          repo sync -c --no-tags --no-clone-bundle -j2 2>&1 | tee /tmp/probe/sync.log | tail -n 30
 
       - name: Vigia disco final
         working-directory: /home/runner/evo
@@ -55,19 +54,26 @@ jobs:
           df -h /
           FREE=$(df --output=avail -BG / | tail -n 1 | tr -dc '0-9')
           echo "livre: ${FREE}GB"
-          if [ "$FREE" -lt 15 ]; then echo "FALHA: disco insuficiente"; exit 1; fi
+          if [ "$FREE" -lt 20 ]; then echo "FALHA: disco insuficiente para build"; exit 1; fi
 
-      - name: lunch evox_gsi-userdebug (nao falhar se der erro)
+      - name: lunch evox_gsi-userdebug
         working-directory: /home/runner/evo
         run: |
-          echo "=== PWD ==="
-          pwd
-          echo "=== Verificando stub ==="
-          ls -la vendor/lineage/build/envsetup.sh
-          cat vendor/lineage/build/envsetup.sh
-          echo "=== Source build/envsetup.sh ==="
+          ls device/phh/treble/evox_gsi.mk vendor/hardware_overlay/overlay.mk treble_app/TrebleApp.apk
           source build/envsetup.sh
-          echo "=== Lunch ==="
-          set +e
           lunch evox_gsi-userdebug
-          echo "=== Exit code: $? ==="
+
+      - name: Compilar GSI (mka evox_gsi)
+        working-directory: /home/runner/evo
+        timeout-minutes: 300
+        run: |
+          mka evox_gsi -j$(nproc --all) 2>&1 | tee /tmp/probe/build.log | tail -n 40
+          ls -lh out/target/product/evox_gsi/system.img
+
+      - name: Upload system.img
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: evox-a17-gsi-system-img
+          path: /home/runner/evo/out/target/product/evox_gsi/system.img
+          retention-days: 14
